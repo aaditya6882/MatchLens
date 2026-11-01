@@ -1,9 +1,3 @@
 pandas
-numpy
-kloppy
-mplsoccer
-matplotlib
 streamlit
-anthropic
-chromadb
-sentence-transformers
+pytest

@@ -494,11 +494,14 @@ def plot_frame(df: pd.DataFrame, frame: int, title: str = "", save_path: Optiona
         raise ValueError(f"Frame {frame} not found in tracking DataFrame.")
 
     fig, ax = plt.subplots(figsize=(10, 6.5))
-    ax.set_facecolor("#2e7d32")  # Pitch grass green
+
+    # Grass background patch (visible even with axis off)
+    ax.add_patch(Rectangle((-HALF_LENGTH - 4, -HALF_WIDTH - 4), PITCH_LENGTH + 8, PITCH_WIDTH + 8,
+                           facecolor="#2e7d32", edgecolor="none", zorder=0))
 
     # Pitch boundary
     ax.add_patch(Rectangle((-HALF_LENGTH, -HALF_WIDTH), PITCH_LENGTH, PITCH_WIDTH,
-                           fill=False, edgecolor="white", linewidth=2))
+                           fill=False, edgecolor="white", linewidth=2, zorder=1))
 
     # Halfway line & center circle
     ax.plot([0, 0], [-HALF_WIDTH, HALF_WIDTH], color="white", linewidth=1.5)
